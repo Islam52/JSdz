@@ -1,3 +1,5 @@
+const DISCOUNT_ELEMENT_ID = 'discountCheckbox'
+
 function generateId() {
     const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     const uniqid = randLetter + Date.now();
@@ -19,14 +21,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const app = document.querySelector('#app');
     
     // Генерация DOM объектов
-    const headerItems = ['ID', 'Название Товара', 'Цена']
+    const headerItems = ['ID', 'Название Товара', 'Цена', 'Скидка']
     const basketList = [];
 
     function addGood() {
-        const name = prompt('Введите название');
-        const price = prompt('Введите цену');
-        console.log(Number(price))
-        createGood(new Basket(name, false, Number(price)));
+        createGood(new Basket(nameInput.value, false, Number(priceInput.value)));
     }
 
     const basket = new Basket('sneakers', true, 350);
@@ -67,15 +66,55 @@ window.addEventListener('DOMContentLoaded', () => {
         tbody.appendChild(basketContainer)
     }
 
+    function addGood() {
+        const name = document.querySelector('#${GOOD_NAME_ID}');
+        const price = document.querySelector('#${GOOD_NAME_ID}');
+        const discount = document.querySelector('#${GOOD_NAME_ID}');
+
+        createGood(new Basket(name.value, discount.checked))
+    }
+
     basketList.forEach(createGood)
     table.appendChild(tbody)
 
+    // Генерация модального окна
+    const modal = document.createElement('dialog')
+
+    const nameInput = document.createElement('input')
+    nameInput.placeholder = 'введите название товара'
+
+
+
+
+    const priceInput = document.createElement('input')
+    priceInput.placeholder = 'введите цену товара'
+
+    const goodDiscountCheckbox = document.createElement('input')
+    goodDiscountCheckbox.innerText = 'Скидка'
+    goodDiscountCheckbox.id = DISCOUNT_ELEMENT_ID
+    goodDiscountCheckbox.type = 'checkbox'
+    goodDiscountCheckbox.style.display = 'block'
+
+    const addGoodButton = document.createElement('button')
+    addGoodButton.innerText = 'добавить товар'
+
+    addGoodButton.addEventListener('click', addGood)
+
+    modal.appendChild(nameInput)
+    modal.appendChild(priceInput)
+    modal.appendChild(addGoodButton)
 
     const addButton = document.createElement('button');
     addButton.innerText = 'Добавить';
-    addButton.addEventListener('click', addGood);
+    addButton.addEventListener('click', () => {
+        modal.open = true;
+    });
 
     // Вход в программу
     app.appendChild(addButton);
     app.appendChild(table);
+    app.appendChild(modal)
 });
+
+
+

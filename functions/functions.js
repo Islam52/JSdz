@@ -16,13 +16,30 @@ function matching(first, second) {
 numerics = x.sort(matching);
 document.writeln(numerics);
 
+// let arrOne = ["Australia", "Germany", "United States of America"];
+// console.log(arrOne);
+// console.log(arrOne.length);
 
-const user = { 
-    contry: 'Australia', 
-    name: 'Germany', 
-    longest: 'United States of America' 
-}
+// const user = { 
+//     contry: 'Australia', 
+//     name: 'Germany', 
+//     longest: 'United States of America' 
+// }
 
-const {longest} = user
+// const {longest} = user
 
-console.log(longest);
+// console.log(longest);
+
+// const text = [ "Australia", "Germany", "United States of America"]
+
+// const maxText = Math.max(...text)
+
+// console.log(maxText)
+
+// const arr = [ "Australia", "Germany", "United States of America"]
+
+// const filter = arr.filter((elem) => typeof elem === 'string')
+// console.log(filter)
+
+let shortWord = [ "Australia", "Germany", "United States of America"];
+shortWord = strSplit[i];

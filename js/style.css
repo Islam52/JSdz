@@ -1,0 +1,22 @@
+.nitro {
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+.menuBtn{
+    display: none;
+}
+.nitro2{
+    display: none;
+}
+@media screen and (max-width:600px) {
+    .nitro{
+        display: none;
+    }
+    .menuBtn{
+        display: block;
+    }
+    .nitro2.click{
+        display: block;
+    }
+}
